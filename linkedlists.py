@@ -39,8 +39,6 @@ class Linkedlist:   #linkedlist || wrapper class
         self.head.next = temporaryNode  #--> assign the initial head node as the next node instead
         del temporaryNode               #since its being assinged through the temp Node & temp Node currently not in use, just del
         
-        #######--End of alternate fn
-        
         
     def insertAt(self, newNode, position):  #function to add node at centre of linked list
         

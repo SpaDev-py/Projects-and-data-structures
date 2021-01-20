@@ -22,7 +22,10 @@ class Linkedlist:   #linkedlist || wrapper class
             Length += 1
             currentNode = currentNode.next
         return Length
-        
+
+#<===========INSERTION===========>
+
+
     def insertHead(self, newNode):  #this fn inserts Nodes at the beginning of a list
         
         #######--alternative irrelevant method to test if the first node is empty or not & print appropriate msg--########
@@ -81,21 +84,58 @@ class Linkedlist:   #linkedlist || wrapper class
             #the above assignment is just to traverse the list starting from the top of the list(self.head) 
             #to arrive at the last node on the list we create a loop(lastNode.next), if it is empty it breaks out but if not then
             #assign then it traverses until the last node. if the condition is satisfied the loop breaks and assign that lastNode.next as the newNode
-            
-            
-            
+      
             while True:
                 if lastNode.next is None:   #just giving a condition if the lastNode.next is empty then break  out of the loop
+                                            #Note: the condition needs to come before the iteration process,
+                                            #the machine reads programs line by line and so it keeps iterating with no specific condition 
+                                            #telling it to break
                     break   
                 lastNode = lastNode.next    #else assign the lastNode as the nextNode. it keeps iterating through any added node
             lastNode.next = newNode
 
+
+
+    
+#<==========DELETION=======>
+
+    def deleteHead(self):       #this function deletes nodes at the begining of the linkedlist
+        self.head = self.head.next  #A simple line that just sets the head Node to be the next Node
+
+
+    def deleteAt(self, position):   #This function deletes Nodes at certain specific positions in the linkedlist
+        if position < 0 or position >= self.listLength():
+            print('Invalid position')
+            return
+        currentNode = self.head
+        currentPosition = 0
+
+        while True:
+            if currentPosition == position:
+                previousNode.next = currentNode.next
+                currentNode = None
+                break
+            previousNode = currentNode
+            currentNode = currentNode.next
+            currentPosition += 1
+
+    def deleteEnd(self):
+        lastNode = self.head
+        while True:
+            if lastNode.next is None:
+                previousNode.next = None
+                lastNode = None
+                break
+            previousNode = lastNode
+            lastNode = lastNode.next
+
+#Note: most of the delete Node processes are similar to the processes in the insert Node
+
     def printList(self):
-        
         currentNode = self.head     #set a currentNode var to the first node on the list
         if self.head is None:   #if the linked list is empty it prints the statement & returns to the begining of the prog
             print("List is empty")
-            return 
+            return #This return statement lets the process end and not continue when the list is empty
         
         while True:
             if currentNode is None: #if the currentnode has no more data the loop ends and breaks
@@ -103,6 +143,23 @@ class Linkedlist:   #linkedlist || wrapper class
             print(currentNode.data, '-->', end=' ')     #print the data in the current list(being the head/top of the list)
             #without the data part it only prints the memory location of the data
             currentNode = currentNode.next  #then move to the next data
+        print('None')   #Print None at the end of each list print no matter what. it lets You know the end of the list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 firstNode = Node(10)
@@ -114,6 +171,12 @@ linkedList.insertEnd(secondNode)
 
 thirdNode = Node(15)
 linkedList.insertAt(thirdNode, 1)
+
+linkedList.printList()
+
+#linkedList.deleteHead()
+#linkedList.deleteAt(3)
+#linkedList.deleteEnd()
 
 linkedList.printList()
 

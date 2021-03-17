@@ -1,10 +1,10 @@
 # A bubble sort is a type of sorting algorithm that sorts sequentially, 
-# comparing the first two and swapping them in order of the smallest until it reaches the end of the list
+# comparing the first two and swapping them in order of ascending until it reaches the end of the list
 # and restarts the whole process over again until all the items are in ascending order
 
 
 def bubbleSort(myList): # Create a function
-    for i in range(0, len(myList) - 1): # This handles the repeated looping / traversal on the list over and over until no more item is swapped
+    for i in range(0, len(myList) - 1): # This handles the repeated looping / traversal on the list over and over until no more items are swapped
         
         for j in range(0, len(myList) -1): # This controls the indexing iteration of the list
             if myList[j] > myList[j + 1]:   # Compares the preceding item with the succeedng one
